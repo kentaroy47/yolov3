@@ -19,7 +19,7 @@ class LoadImages:  # for inference
         self.height = img_size
         img_formats = ['.jpg', '.jpeg', '.png', '.tif']
         vid_formats = ['.mov', '.avi', '.mp4']
-
+        print(path)
         files = []
         if os.path.isdir(path):
             files = sorted(glob.glob('%s/*.*' % path))
@@ -131,6 +131,7 @@ class LoadWebcam:  # for inference
 
 class LoadImagesAndLabels(Dataset):  # for training/testing
     def __init__(self, path, img_size=416, batch_size=16, augment=False, rect=True, image_weights=False):
+        print(path)
         with open(path, 'r') as f:
             img_files = f.read().splitlines()
             self.img_files = list(filter(lambda x: len(x) > 0, img_files))
